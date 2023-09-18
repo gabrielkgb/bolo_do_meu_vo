@@ -1,25 +1,34 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './guardas/login.guard';
+import { RotasGuard } from './guardas/rotas.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    path: '',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule), canActivate:[LoginGuard]
   },
+  {
+    path: 'footer',
+    loadChildren: () => import('./componentes/footer/footer.module').then( m => m.FooterModule), canActivate:[RotasGuard]
+  },
+
+  {
+    path: 'cadastro',
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule), canActivate:[LoginGuard]
+  },
+
+  
+  
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
-  },
-  {
-    path: 'formulario',
-    loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
-  },   
-  {
-    /* adicionar o id para permitiir que a rota o receba  */
-    path: 'update/:id',
-    loadChildren: () => import('./update/update.module').then( m => m.UpdatePageModule)
   }
+ 
+
+
+  
 
 
 ];

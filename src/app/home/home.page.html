@@ -1,44 +1,68 @@
-<!-- Cabeçalho component -->
+<!-- Cabeçalho -->
 <app-header></app-header>
-
-
-<ion-content [fullscreen]="true">
-  <!-- <ion-img [src]="imagem"></ion-img> -->
-
-  <!-- Inicio da Lista -->
+<!-- Conteúdo Principal -->
+<ion-content>
   <ion-list>
-    <!-- ion-item-sliding permite arrastar o item- -->
-    <ion-item-sliding *ngFor="let produto of minhaLista">
-
-    <!-- Itens da lista -->
+    <!-- Receita 1 -->
     <ion-item>
-      <ion-label><strong>Item:</strong>  {{produto.item}}</ion-label>
-      <ion-label><strong>Quant:</strong> {{produto.quant}}</ion-label>      
-    </ion-item> 
+      <ion-thumbnail slot="start">
+        <img src="https://cdn.pixabay.com/photo/2017/06/03/23/56/cake-2370008_1280.jpg" alt="Bolo de Chocolate">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Bolo de Chocolate</h2>
+        <p>Uma deliciosa receita de bolo de chocolate.</p>
+      </ion-label>
+    </ion-item>
 
-    <!-- As opções do sliding -->
-    <ion-item-options>
+    <!-- Receita 2 -->
+    <ion-item>
+      <ion-item-sliding *ngFor="let produto of minhaLista">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="produto.ftbolo"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{produto.item}}</h2>
+        <p>{{produto.receita}}</p>
+      </ion-label>
+    </ion-item-sliding>
+    </ion-item>
 
-      <!-- Botão excluir -->
-      <ion-item-option color="danger" (click)="apaguei(produto.id)">
-        <ion-icon name="trash-outline"></ion-icon>
-      </ion-item-option>
+    <ion-list>
+      <!-- ion-item-sliding permite arrastar o item- -->
+      <ion-item-sliding *ngFor="let produto of minhaLista">
 
-      <!-- Botão editar-->
-      <ion-item-option color="success" [routerLink]="['/update',produto.id]">
-        <ion-icon name="pencil-outline"></ion-icon>
-      </ion-item-option>
-    
-    </ion-item-options>
-  </ion-item-sliding>
+        <!-- Itens da lista -->
+        <ion-item>
+          <ion-label><strong>Item:</strong> {{produto.item}}</ion-label>
+          <ion-label><strong>Quant:</strong> {{produto.receita}}</ion-label>
+          <ion-label><strong>foto do bolo:</strong> {{produto.ftbolo}}</ion-label>
 
+        </ion-item>
+
+        <!-- As opções do sliding -->
+        <ion-item-options>
+
+          <!-- Botão excluir -->
+          <ion-item-option color="danger" (click)="apaguei(produto.id)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+
+          <!-- Botão editar-->
+          <ion-item-option color="success" [routerLink]="['/update',produto.id]">
+            <ion-icon name="pencil-outline"></ion-icon>
+          </ion-item-option>
+
+        </ion-item-options>
+      </ion-item-sliding>
+
+    </ion-list>
+
+
+    <!-- Mais Receitas -->
+    <ion-item button lines="none">
+      <ion-label>
+        <h2>Ver Mais Receitas</h2>
+      </ion-label>
+    </ion-item>
   </ion-list>
-
-
-  <!-- Botão -->
-  <ion-fab horizontal="end" vertical="bottom">
-    <ion-fab-button routerLink="/formulario">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 </ion-content>

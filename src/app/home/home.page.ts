@@ -1,21 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { Produtos } from '../model/produto.model';
-import { DatabaseService } from '../servico/database.service';
+import { Component } from '@angular/core';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { FirebaseService } from '../servico/firebase.service';
+import { FirebaseService } from 'src/servico/firebase.service';
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit{
-  /* Atributos para cima */
-  titulo = 'ShoppingList';
-  imagem = 'https://cdn.pixabay.com/photo/2016/03/26/16/44/tomatoes-1280859_640.jpg';
+export class HomePage {
   
-  /* Array do ngFor */
-  /* Produtos é o meu molde */
   minhaLista:any[] = [];
 
   /* Métodos para baixo */
@@ -30,7 +25,7 @@ export class HomePage implements OnInit{
     private loadinControl: LoadingController,
 
     /* Vou fazer um toast - Ou seja uma mensagem  */
-    private toast: ToastController
+    private toast: ToastController,
     
     ) {}
 
@@ -82,6 +77,5 @@ export class HomePage implements OnInit{
   /* refresh(){
     location.reload();
   } */
-
 
 }
