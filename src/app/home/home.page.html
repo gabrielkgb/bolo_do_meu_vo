@@ -14,19 +14,6 @@
       </ion-label>
     </ion-item>
 
-    <!-- Receita 2 -->
-    <ion-item>
-      <ion-item-sliding *ngFor="let produto of minhaLista">
-      <ion-thumbnail slot="start">
-        <ion-img [src]="produto.ftbolo"></ion-img>
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{produto.item}}</h2>
-        <p>{{produto.receita}}</p>
-      </ion-label>
-    </ion-item-sliding>
-    </ion-item>
-
     <ion-list>
       <!-- ion-item-sliding permite arrastar o item- -->
       <ion-item-sliding *ngFor="let produto of minhaLista">
